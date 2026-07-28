@@ -49,7 +49,7 @@ class SecretsController extends Controller
 
         if (!$secret) {
             //@NOTE We don't return back anything more informative as this would be a public endpoint, and we don't want potential bad actors to have insight into tokens.
-            return response("Secret not found.", 404);
+            abort(404);
         }
 
         $secret->markRead();
@@ -58,6 +58,5 @@ class SecretsController extends Controller
             'message' => $secret->message,
             'senderName' => $secret->user->name,
         ]);
-        /* return response($secret->message, 200); */
     }
 }

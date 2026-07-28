@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
     senderName: String,
-    message: Array,
+    message: String,
 });
 
 </script>
