@@ -2,7 +2,7 @@
 namespace Tests\Feature;
 
 use App\Models\Secret;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithFaker;
 use App\Models\User;
 use Tests\TestCase;
@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Request;
 
 class SecretsTest extends TestCase {
-    use RefreshDatabase;
+    use DatabaseTransactions;
     use WithFaker;
 
     public function test_secrets_page_can_be_rendered() {
