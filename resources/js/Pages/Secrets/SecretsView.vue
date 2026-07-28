@@ -1,0 +1,16 @@
+<script setup>
+const props = defineProps({
+    senderName: String,
+    message: Array,
+});
+
+</script>
+
+<template>
+    <div class="flex flex-col">
+        <span>You have a message from <span v-text="senderName"/>, please read or copy down before exiting page! Message will not be viewable again!</span>
+        <span class="grow mt-2 border-2 bg-blue-300 border-blue-500 rounded-lg p-4" v-text="props.message"/>
+    </div>
+</template>
+
+
