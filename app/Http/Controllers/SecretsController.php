@@ -26,12 +26,9 @@ class SecretsController extends Controller
             "message" => "required",
         ]);
 
-        $message = $request->input("message");
-        $expiry = $request->input("expires_at");
-
         $secret = new Secret();
-        $secret->message = $message;
-        $secret->expires_at = $expiry;
+        $secret->message = $request->input("message");;
+        $secret->expires_at = $request->input("expires_at");
         $secret->user_id = Auth::user()->id;
 
         $secret->save();
