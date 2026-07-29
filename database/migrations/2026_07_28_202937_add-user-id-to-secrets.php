@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('Secrets', function (Blueprint $table) {
-            $table->foreignId('user_id')->default(0);
+            $table->foreignId('user_id')->index()->default(0);
         });
     }
 
