@@ -24,6 +24,7 @@ class SecretsController extends Controller
     public function generate(Request $request) {
         $request->validate([
             "message" => "required",
+            "expires_at" => ["nullable", "after:yesterday"]
         ]);
 
         $secret = new Secret();
