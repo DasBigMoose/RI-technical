@@ -28,7 +28,7 @@ class SecretsController extends Controller
         ]);
 
         $secret = new Secret();
-        $secret->message = $request->input("message");;
+        $secret->message = $request->input("message");
         $secret->expires_at = $request->input("expires_at");
         $secret->user_id = Auth::user()->id;
 
