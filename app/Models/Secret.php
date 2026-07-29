@@ -45,7 +45,7 @@ class Secret extends Model {
             $query->whereNull('accessed_at')
                   ->where(function (Builder $query) {
                       $query->whereNull("expires_at")
-                            ->orWhereNowOrFuture("expires_at");
+                            ->orWhereTodayOrAfter("expires_at");
                   });
         });
     }
@@ -53,7 +53,7 @@ class Secret extends Model {
     public function scopeInactive(Builder $query) {
         $query->where(function (Builder $query) {
             $query->whereNotNull('accessed_at')
-                  ->orWherePast('expires_at');
+                  ->orWhereBeforeToday('expires_at');
         });
     }
 
