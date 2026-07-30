@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\SecretsController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -13,6 +14,9 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/secrets/{token}', [SecretsController::class, 'read'])
+    ->name('secrets.read');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -22,6 +26,9 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::get('/secrets', [\App\Http\Controllers\SecretsController::class, 'index'])
+    Route::get('/secrets', [SecretsController::class, 'index'])
         ->name('secrets.index');
+    Route::post('/secrets', [SecretsController::class, "generate"])
+        ->name('secrets.generate');
 });
+
